@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 
 class AddUser extends Component {
-    render() {
-        return (
-            <div className="col-3">
+    constructor(props) {
+        super(props);
+
+    }
+
+    hienthiform = () => {
+        if (this.props.hienthiform === true) {
+            return (
                 <div className="card border-primary mb-3 mt-2">
                     <div className="card-header">Thêm mới user vào hệ thống</div>
                     <div className="card-body text-primary">
@@ -26,6 +31,15 @@ class AddUser extends Component {
                         </div>
                     </div>
                 </div>
+            );
+        }
+    }
+
+    render() {
+        console.log('adduser : ' + this.props.hienthiform)
+        return (
+            <div className="col-3">
+                {this.hienthiform()}
             </div>
         );
     }
