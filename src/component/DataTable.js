@@ -4,6 +4,7 @@ class DataTable extends Component {
     render() {
         return (
             <div className="col-9">
+                <table className="table table-stripped table-hover">
                 <thead>
                     <tr>
                         <th>STT</th>
@@ -21,12 +22,25 @@ class DataTable extends Component {
                     <td>Moderator</td>
                     <td>
                         <div className="btn-group">
-                            <div className="btn btn-warning sua"><i className="fa fa-edit" /> Sua</div>
-                            <div className="btn btn-warning xoa"><i className="fa fa-delete" /> Xoa</div>
+                            <div className="btn btn-warning sua"><i className="fa fa-edit" /> Sửa</div>
+                            <div className="btn btn-danger xoa"><i className="fa fa-delete" /> Xóa</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Tran Duc Luong</td>
+                    <td>0988998822</td>
+                    <td>Moderator</td>
+                    <td>
+                        <div className="btn-group">
+                            <div className="btn btn-warning sua"><i className="fa fa-edit" /> Sửa</div>
+                            <div className="btn btn-danger xoa"><i className="fa fa-delete" /> Xóa</div>
                         </div>
                     </td>
                 </tr>
                 </tbody>
+                </table>
             </div>
         );
     }
