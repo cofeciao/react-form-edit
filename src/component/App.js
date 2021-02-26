@@ -5,42 +5,59 @@ import Header from './Header';
 import Search from "./Search";
 import DataTable from "./DataTable";
 import AddUser from "./AddUser";
+import DataUser from './DataUser.json';
 
 class App extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            hienthiform: false
+            hienthiform: false,
+            data: DataUser,
+            keySearch: ''
         }
     }
 
-    // addUser = () => {
-    //     this.setState({
-    //         hienthiform: !this.state.hienthiform
-    //     })
-    //     return this.state.hienthiform;
-    // }
-
-    click = () => {
+    clickForm = () => {
         this.setState({
             hienthiform: !this.state.hienthiform
         })
     }
 
+    submitSearch = (dl) => {
+        this.setState({
+            keySearch: dl
+        });
+    }
+
+    editUser = (id) => {
+        console.log(id);
+        this.state.data.forEach((item) => {
+            if (item.id === id){
+
+            }
+        })
+    }
+
     render() {
-        // console.log(this.state.hienthiform);
+        var arrSearch = [];
+        this.state.data.forEach((item) => {
+            if (item.ten.indexOf(this.state.keySearch) !== -1){
+               arrSearch.push(item);
+            }
+        })
+
         return (
             <div>
-                <Header></Header>
-                <div className="searchForm">
+                <Header/>
+                {/*<div className="searchForm">*/}
                     <div className="container">
                         <div className="row">
-                            <Search onOff={this.state.hienthiform} hienthiform={() => {this.click()}}></Search>
-                            <DataTable></DataTable>
-                            <AddUser hienthiform={this.state.hienthiform}></AddUser>
+                            <Search submitSearch={(dl) => {this.submitSearch(dl)}} onOff={this.state.hienthiform} hienthiform={() => {this.clickForm()}}/>
+                            <DataTable editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
+                            <AddUser hienthiform={this.state.hienthiform}/>
                         </div>
                     </div>
-                </div>
+                {/*</div>*/}
             </div>
         );
     }

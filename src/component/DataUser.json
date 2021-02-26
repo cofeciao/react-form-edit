@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "ten": "Tran Cao Minh",
+    "dienthoai": "83094838403",
+    "quyen": 1
+  },
+  {
+    "id": 2,
+    "ten": "Tran Van Son",
+    "dienthoai": "09093433242",
+    "quyen": 3
+  },
+  {
+    "id": 3,
+    "ten": "Tran Nhat Quang",
+    "dienthoai": "90458348374",
+    "quyen": 2
+  },
+  {
+    "id": 4,
+    "ten": "Tran Vy Dinh",
+    "dienthoai": "23423423423",
+    "quyen": 2
+  },
+  {
+    "id": 5,
+    "ten": "Truong Khai Son",
+    "dienthoai": "234252368678",
+    "quyen": 1
+  },
+  {
+    "id": 6,
+    "ten": "Tran Khoi Linh",
+    "dienthoai": "83094838403",
+    "quyen": 2
+  }
+]
