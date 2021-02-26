@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class DataTable extends Component {
 
     user = () => this.props.data.map((value,key) => {
-        // console.log(value);
         return (
             <tr>
                 <td>{value.id}</td>
@@ -19,27 +18,6 @@ class DataTable extends Component {
             </tr>
         )
     })
-
-    // formEdit = (id) => {
-    //     if (id !== ''){
-    //         return (
-    //             <tr>
-    //                 <input type="text"/>
-    //                 <input type="text"/>
-    //                 <input type="text"/>
-    //                 <input type="text"/>
-    //                 <td>
-    //                     <div className="btn-group">
-    //                         <div value={value.id} onClick={() => {this.formEdit(value.id)}} className="btn btn-warning sua"><i className="fa fa-edit" /> Sửa</div>
-    //                         <div className="btn btn-danger xoa"><i className="fa fa-delete" /> Xóa</div>
-    //                     </div>
-    //                 </td>
-    //             </tr>
-    //         )
-    //     }
-    // }
-
-
 
     render() {
         return (

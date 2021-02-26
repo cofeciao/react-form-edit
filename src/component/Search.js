@@ -24,6 +24,7 @@ class Search extends Component {
 
     render() {
         // console.log(this.state.tempSearch);
+
         return (
                 <div className="col-12">
                     <div className="row">

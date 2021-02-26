@@ -38,6 +38,23 @@ class App extends Component{
         })
     }
 
+    submitAddUser = (ten,sdt,quyen) => {
+        // console.log(this.state.data)
+        var item = {};
+        item.id = this.state.data.length + 1;
+        item.ten =  ten;
+        item.dienthoai = sdt;
+        item.quyen = quyen;
+        var items = this.state.data;
+        items.push(item);
+        this.setState({
+            data : items
+        })
+        // this.clearInput;
+    }
+
+    // clearInput = () => {}
+
     render() {
         var arrSearch = [];
         this.state.data.forEach((item) => {
@@ -54,7 +71,7 @@ class App extends Component{
                         <div className="row">
                             <Search submitSearch={(dl) => {this.submitSearch(dl)}} onOff={this.state.hienthiform} hienthiform={() => {this.clickForm()}}/>
                             <DataTable editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
-                            <AddUser hienthiform={this.state.hienthiform}/>
+                            <AddUser hienthiform={this.state.hienthiform} submitAddUser={(ten,sdt,quyen) => {this.submitAddUser(ten,sdt,quyen)}}/>
                         </div>
                     </div>
                 {/*</div>*/}
