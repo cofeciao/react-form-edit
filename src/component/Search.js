@@ -4,7 +4,10 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tempSearch: ''
+            tempSearch: '',
+            ten: '',
+            dienthoai: '',
+            quyen: ''
         }
     }
 
@@ -21,9 +24,17 @@ class Search extends Component {
         });
     }
 
-    getInfoUserEdited = (user) => {
+
+
+    getInfoUserEdited = (event) => {
+        // event.preventDefault();
+        const user = {};
+        user.id = this.props.dataOneUser.id
+        user.ten = this.state.ten === '' ? this.props.dataOneUser.ten : this.state.ten;
+        user.dienthoai = this.state.dienthoai === '' ? this.props.dataOneUser.dienthoai : this.state.dienthoai;
+        user.quyen = this.state.quyen === '' ? this.props.dataOneUser.quyen : this.state.quyen;
         this.props.getUserEdit(user);
-        console.log(user);
+        this.props.disableEditForm();
     }
 
     textSearch = (event) => {
@@ -41,7 +52,6 @@ class Search extends Component {
     }
 
     editForm = () => {
-        // console.log(this.props.dataOneUser);
         if (this.props.editStatus === true){
                 return (
                     <div className="card border-primary mb-3 mt-2 secondary-outline">
@@ -52,10 +62,10 @@ class Search extends Component {
                                     <input onChange={(event) => {this.addInfoEdited(event)}} defaultValue={this.props.dataOneUser.ten} name="ten" type="text" className="form-control" placeholder="Tên User"/>
                                 </div>
                                 <div className="form-group">
-                                    <input defaultValue={this.props.dataOneUser.dienthoai} name="dienthoai" type="text" className="form-control" placeholder="Điện thoại"/>
+                                    <input onChange={(event) => {this.addInfoEdited(event)}} defaultValue={this.props.dataOneUser.dienthoai} name="dienthoai" type="text" className="form-control" placeholder="Điện thoại"/>
                                 </div>
                                 <div className="form-group">
-                                    <select defaultValue={this.props.dataOneUser.quyen} name="quyen" className="custom-select">
+                                    <select onChange={(event) => {this.addInfoEdited(event)}} defaultValue={this.props.dataOneUser.quyen} name="quyen" className="custom-select">
                                         <option value>Chọn Quyền mặc định</option>
                                         <option value="1">Admin</option>
                                         <option value="2">Moderator</option>
@@ -66,7 +76,7 @@ class Search extends Component {
                                     <div className="col-12">
                                         <div className="row">
                                             <div className="col-6">
-                                                <div onClick={() => {this.getInfoUserEdited(this.state.ten)}} className="btn btn-block btn-primary">Lưu</div>
+                                                <div onClick={(event) => {this.getInfoUserEdited(event)}} className="btn btn-block btn-primary">Lưu</div>
                                             </div>
                                             <div className="col-6">
                                                 <button onClick={(event) => this.disableEdit(event)} className="btn btn-block btn-secondary">Đóng</button>

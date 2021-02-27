@@ -4,19 +4,17 @@ class DataTable extends Component {
     constructor(props) {
         super(props);
     }
-
-
     user = () => this.props.data.map((value,key) => {
         return (
             <tr>
-                <td>{value.id}</td>
+                <td>{key+1}</td>
                 <td>{value.ten}</td>
                 <td>{value.dienthoai}</td>
                 <td>{value.quyen}</td>
                 <td>
                     <div className="btn-group">
                         <div onClick={(user) => this.props.dataOneUser(value)} className="btn btn-warning sua"><i className="fa fa-edit" /> Sửa</div>
-                        <div className="btn btn-danger xoa"><i className="fa fa-delete" /> Xóa</div>
+                        <div onClick={(user) => {this.props.deleteUser(value)}} className="btn btn-danger xoa"><i className="fa fa-delete" /> Xóa</div>
                     </div>
                 </td>
             </tr>

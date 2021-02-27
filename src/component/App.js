@@ -69,6 +69,17 @@ class App extends Component{
         // console.log(this.state.checkedStatusEditUser)
     }
 
+    deleteUser = (user) => {
+        this.state.data.forEach((item,index) => {
+            if (item.id === user.id){
+                this.state.data.splice(index,1)
+            }
+        })
+        this.setState({
+            data: this.state.data
+        })
+    }
+
     disableEditForm = () => {
         this.setState({
             checkedStatusEditUser : false
@@ -76,12 +87,14 @@ class App extends Component{
     }
 
     getUserEdit = (user) => {
-        // console.log(user);
-        // this.state.data.map((value,key) => {
-        //     value.ten = user.ten;
-        //     value.dienthoai = user.dienthoai;
-        //     value.quyen = user.quyen;
-        // })
+        this.state.data.forEach((value) => {
+            if (value.id === user.id){
+                value.id = user.id;
+                value.ten = user.ten;
+                value.dienthoai = user.dienthoai;
+                value.quyen = user.quyen;
+            }
+        })
     }
 
     render() {
@@ -99,7 +112,7 @@ class App extends Component{
                     <div className="container">
                         <div className="row">
                             <Search getUserEdit={(user) => {this.getUserEdit(user)}} disableEditForm={this.disableEditForm} dataOneUser={this.state.userEdit} editStatus={this.state.checkedStatusEditUser} enableStatus={this.state.enableStatus} submitSearch={(dl) => {this.submitSearch(dl)}} onOff={this.state.hienthiform} hienthiform={() => {this.clickForm()}}/>
-                            <DataTable dataOneUser={(user) => {this.dataOneUser(user)}} editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
+                            <DataTable deleteUser={(user) => {this.deleteUser(user)}} dataOneUser={(user) => {this.dataOneUser(user)}} editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
                             <AddUser hienthiform={this.state.hienthiform} submitAddUser={(ten,sdt,quyen) => {this.submitAddUser(ten,sdt,quyen)}}/>
                         </div>
                     </div>
