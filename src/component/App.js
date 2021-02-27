@@ -13,7 +13,9 @@ class App extends Component{
         this.state = {
             hienthiform: false,
             data: DataUser,
-            keySearch: ''
+            keySearch: '',
+            checkedStatusEditUser: false,
+            userEdit: {}
         }
     }
 
@@ -39,9 +41,10 @@ class App extends Component{
     }
 
     submitAddUser = (ten,sdt,quyen) => {
-        // console.log(this.state.data)
         var item = {};
-        item.id = this.state.data.length + 1;
+        // var dataLength = this.state.data.length;
+        item.id = "";
+        // console.log(item.id)
         item.ten =  ten;
         item.dienthoai = sdt;
         item.quyen = quyen;
@@ -50,10 +53,36 @@ class App extends Component{
         this.setState({
             data : items
         })
-        // this.clearInput;
     }
 
-    // clearInput = () => {}
+    enableStatus = () => {
+        this.setState({
+
+        });
+    }
+
+    dataOneUser = (user) => {
+        this.setState({
+            userEdit: user,
+            checkedStatusEditUser : true
+        });
+        // console.log(this.state.checkedStatusEditUser)
+    }
+
+    disableEditForm = () => {
+        this.setState({
+            checkedStatusEditUser : false
+        });
+    }
+
+    getUserEdit = (user) => {
+        // console.log(user);
+        // this.state.data.map((value,key) => {
+        //     value.ten = user.ten;
+        //     value.dienthoai = user.dienthoai;
+        //     value.quyen = user.quyen;
+        // })
+    }
 
     render() {
         var arrSearch = [];
@@ -69,8 +98,8 @@ class App extends Component{
                 {/*<div className="searchForm">*/}
                     <div className="container">
                         <div className="row">
-                            <Search submitSearch={(dl) => {this.submitSearch(dl)}} onOff={this.state.hienthiform} hienthiform={() => {this.clickForm()}}/>
-                            <DataTable editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
+                            <Search getUserEdit={(user) => {this.getUserEdit(user)}} disableEditForm={this.disableEditForm} dataOneUser={this.state.userEdit} editStatus={this.state.checkedStatusEditUser} enableStatus={this.state.enableStatus} submitSearch={(dl) => {this.submitSearch(dl)}} onOff={this.state.hienthiform} hienthiform={() => {this.clickForm()}}/>
+                            <DataTable dataOneUser={(user) => {this.dataOneUser(user)}} editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
                             <AddUser hienthiform={this.state.hienthiform} submitAddUser={(ten,sdt,quyen) => {this.submitAddUser(ten,sdt,quyen)}}/>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ class AddUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            ten: ''
         }
     }
 
@@ -23,13 +23,12 @@ class AddUser extends Component {
 
     add = (event) => {
         this.props.submitAddUser(this.state.ten,this.state.dienthoai,this.state.quyen);
-        event.preventDefault();
-        console.log(this.state.ten);
-        const name = event.target.name;
-        const value = '';
-        this.setState({
-            [name]: value
-        })
+        // event.preventDefault();
+        // console.log(this.state.ten);
+        // const ten = this.state.ten;
+        // this.setState({
+        //     ten : ''
+        // })
     }
 
     hienthiform = () => {
@@ -55,7 +54,7 @@ class AddUser extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <button type="submit" onClick={(event) => {this.add(event)}} className="btn btn-block btn-primary">Thêm mới</button>
+                                    <button type="reset" onClick={(event) => {this.add(event)}} className="btn btn-block btn-primary">Thêm mới</button>
                                 </div>
                             </div>
                         </form>
