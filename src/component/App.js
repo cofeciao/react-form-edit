@@ -6,8 +6,11 @@ import Search from "./Search";
 import DataTable from "./DataTable";
 import AddUser from "./AddUser";
 import DataUser from './DataUser.json';
+import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+// import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class App extends Component{
+
     constructor(props) {
         super(props);
         this.state = {
@@ -121,5 +124,6 @@ class App extends Component{
         );
     }
 }
+
 
 export default App;
