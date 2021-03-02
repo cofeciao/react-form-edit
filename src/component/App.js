@@ -70,13 +70,9 @@ class App extends Component{
     }
 
     deleteUser = (user) => {
-        this.state.data.forEach((item,index) => {
-            if (item.id === user.id){
-                this.state.data.splice(index,1)
-            }
-        })
+        var arrayTerm = this.state.data.filter(item => item !== user);
         this.setState({
-            data: this.state.data
+            data: arrayTerm
         })
     }
 
