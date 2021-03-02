@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 
 class DataTable extends Component {
-    constructor(props) {
-        super(props);
-    }
     user = () => this.props.data.map((value,key) => {
         return (
-            <tr>
+            <tr key={key}>
                 <td>{key+1}</td>
                 <td>{value.ten}</td>
                 <td>{value.dienthoai}</td>

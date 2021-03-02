@@ -6,8 +6,7 @@ import Search from "./Search";
 import DataTable from "./DataTable";
 import AddUser from "./AddUser";
 import DataUser from './DataUser.json';
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
-// import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import {connect} from 'react-redux'
 
 class App extends Component{
 
@@ -106,6 +105,7 @@ class App extends Component{
 
         return (
             <div>
+                {console.log(this.props.num)}
                 <Header/>
                 {/*<div className="searchForm">*/}
                     <div className="container">
@@ -121,5 +121,10 @@ class App extends Component{
     }
 }
 
+var mapStateToProps = (state,ownProps) => {
+    return {
+        dulieu: state.num
+    }
+}
 
-export default App;
+export default connect(mapStateToProps)(App);
