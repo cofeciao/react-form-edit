@@ -105,7 +105,6 @@ class App extends Component{
 
         return (
             <div>
-                {console.log(this.props.num)}
                 <Header/>
                 {/*<div className="searchForm">*/}
                     <div className="container">

@@ -1,3 +1,4 @@
+import
 var redux = require('redux');
 var oldState = {
     num : ['alo' , 'cái' , 'xô'],
@@ -6,20 +7,40 @@ var oldState = {
 
 var reducer1 = (state = oldState,action) => {
     switch (action.num){
-        case "CHANGE_EDIT_STATUS" :
-            return {...state,isStatus:!state.isStatus}
         case "ADD_NEW" :
-            return {...state,num:[...state.num,action.newItem]}
+            return [...state,action.newItem];
         case 'DELETE' :
-            return {...state,num: state.num.filter((value,index) => index !== action.i)}
+            return state.num.filter((value,index) =>
+                index !== action.index
+            );
         default:
             return state
     }
 }
 
+const numInitialState = ['alo' , 'cái' , 'xô'];
+const numReducer = (state = numInitialState,action) => {
+    switch (action.type) {
+        case "ADD_NEW" :
+            return [...state,action.newItem];
+        case 'DELETE' :
+            return state.num.filter((value,index) =>
+                index !== action.index
+            );
+    }
+}
+
+const isStatusInitialState = ['alo' , 'cái' , 'xô'];
+const isStatusReducer = (state = isStatusInitialState,action) => {
+    switch (action.type) {
+        case "CHANGE_EDIT_STATUS" :
+            return {...state,isStatus:!state.isStatus};
+    }
+}
+
 var store1 = redux.createStore(reducer1);
 store1.subscribe(() => {
-    console.log(store1.getState());
+    store1.getState();
 });
 
 
