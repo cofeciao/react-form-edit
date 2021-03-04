@@ -1,6 +1,6 @@
 const isStatusInitialState = false;
 const isStatusReducer = (state = isStatusInitialState,action) => {
-    switch (action.type) {
+    switch (action) {
         case "CHANGE_EDIT_STATUS":
             return !state;
         default:

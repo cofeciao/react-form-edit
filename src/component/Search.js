@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class Search extends Component {
     constructor(props) {
@@ -114,4 +115,19 @@ class Search extends Component {
     }
 }
 
-export default Search;
+
+const mapStateToProps = (state,ownProps) => {
+    return {
+        dulieu: state.num
+    }
+}
+
+const mapDispathToProps = (dispath,ownProps) => {
+    return {
+        useIsStatusInStore: () => {
+            dispath({type:'CHANGE_EDIT_STATUS'})
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispathToProps)(Search);

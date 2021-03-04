@@ -120,10 +120,18 @@ class App extends Component{
     }
 }
 
-var mapStateToProps = (state,ownProps) => {
+console.log(this.props.useIsStatusInStore());
+const mapStateToProps = (state,ownProps) => {
     return {
         dulieu: state.num
     }
 }
 
+const mapDispathToProps = (dispath,ownProps) => {
+    return {
+        useIsStatusInStore: () => {
+            dispath({type:'CHANGE_EDIT_STATUS'})
+        }
+    }
+}
 export default connect(mapStateToProps)(App);

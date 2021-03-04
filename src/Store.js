@@ -45,16 +45,13 @@ const allReducers = redux.combineReducers({
     isStatus: isStatusReducer,
 })
 
-var store1 = redux.createStore(reducer1);
+var store1 = redux.createStore(allReducers);
 store1.subscribe(() => {
     store1.getState();
 });
 
-
-
-
-store1.dispatch({type: "CHANGE_EDIT_STATUS"});
-store1.dispatch({type: "ADD_NEW",
-                        newItem: 'tai trau'
-                        });
+// store1.dispatch({type: "CHANGE_EDIT_STATUS"});
+// store1.dispatch({type: "ADD_NEW",
+//                         newItem: 'tai trau'
+//                         });
 export default store1;
