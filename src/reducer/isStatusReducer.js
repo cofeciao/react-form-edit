@@ -7,4 +7,4 @@ const isStatusReducer = (state = isStatusInitialState,action) => {
             return state;
     }
 }
-export default isStatusReducer();
+export default isStatusReducer;

@@ -120,7 +120,6 @@ class App extends Component{
     }
 }
 
-console.log(this.props.useIsStatusInStore());
 const mapStateToProps = (state,ownProps) => {
     return {
         dulieu: state.num
@@ -134,4 +133,4 @@ const mapDispathToProps = (dispath,ownProps) => {
         }
     }
 }
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps,mapDispathToProps)(App);

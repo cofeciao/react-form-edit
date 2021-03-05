@@ -115,7 +115,6 @@ class Search extends Component {
     }
 }
 
-
 const mapStateToProps = (state,ownProps) => {
     return {
         dulieu: state.num
@@ -125,7 +124,10 @@ const mapStateToProps = (state,ownProps) => {
 const mapDispathToProps = (dispath,ownProps) => {
     return {
         useIsStatusInStore: () => {
-            dispath({type:'CHANGE_EDIT_STATUS'})
+            dispath({type:"CHANGE_EDIT_STATUS"});
+        },
+        useDeleteInStore: () => {
+            dispath({type:"DELETE"});
         }
     }
 }

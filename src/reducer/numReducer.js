@@ -6,7 +6,7 @@ const numReducer = (state = numInitialState,action) => {
         case "DELETE" :
             return [state.filter((value,index) => index !== action.index)];
         default :
-                return state;
+            return state;
     }
 }
-export default numReducer();
+export default numReducer;
