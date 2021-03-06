@@ -17,7 +17,6 @@ function App() {
             title: 'day la ham push',
             content: 'su dung ham push de sinh ra id ngau nhien'
         })
-
     }
 
   return (
