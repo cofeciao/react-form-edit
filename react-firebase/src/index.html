@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: black;">
     <a class="navbar-brand" href="#">Menu</a>
@@ -18,21 +19,40 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Action 1</a>
-                    <a class="dropdown-item" href="#">Action 2</a>
-                </div>
-            </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+<!--        <form class="form-inline my-2 my-lg-0">-->
+<!--            <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--        </form>-->
     </div>
 </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div id="noteList" role="tablist" aria-multiselectable="true">
+                <div class="card">
+                    <div class="card-header" role="tab" id="section1HeaderId">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" data-parent="#noteList" href="#noteContent1"
+                               aria-expanded="true" aria-controls="noteContent1">
+                                Ngày 3/3 2021
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="noteContent1" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
+                        <div class="card-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam commodi dolor dolorum error et fuga illo incidunt laborum minus mollitia, natus nesciunt quae quidem repudiandae. Cupiditate dignissimos veritatis voluptates.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequuntur maxime officia quia. Beatae eaque et,
+            exercitationem fuga ipsum laboriosam, neque nesciunt obcaecati recusandae sunt veniam, voluptatum! Debitis, ea, quod?
+        </div>
+    </div>
+</div>
 <body>
 </body>
 </html>
