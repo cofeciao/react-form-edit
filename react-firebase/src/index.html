@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: black;">
     <a class="navbar-brand" href="#">Menu</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
             aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"></button>
-    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -20,36 +22,73 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
         </ul>
-<!--        <form class="form-inline my-2 my-lg-0">-->
-<!--            <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
-<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--        </form>-->
     </div>
+    <form class="form-inline my-2 my-lg-0 d-flex justify-content-end">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-8">
-            <div id="noteList" role="tablist" aria-multiselectable="true">
+        <div class="col mt-3">
+            <h2>Quản Lý Note</h2>
+            <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+            <div id="noteList">
                 <div class="card">
-                    <div class="card-header" role="tab" id="section1HeaderId">
-                        <h5 class="mb-0">
-                            <a data-toggle="collapse" data-parent="#noteList" href="#noteContent1"
-                               aria-expanded="true" aria-controls="noteContent1">
-                                Ngày 3/3 2021
-                            </a>
-                        </h5>
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#note1">
+                           Mục 1
+                        </a>
                     </div>
-                    <div id="noteContent1" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
+                    <div id="note1" class="collapse show" data-parent="#noteList">
                         <div class="card-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam commodi dolor dolorum error et fuga illo incidunt laborum minus mollitia, natus nesciunt quae quidem repudiandae. Cupiditate dignissimos veritatis voluptates.
+                            <div id="noteListChild">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#note2">
+                                            Ngày 9/3 2021
+                                        </a>
+                                    </div>
+                                    <div id="note2" class="collapse show" data-parent="#noteListChild">
+                                        <div class="card-body">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="noteListChild2">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#note3">
+                                            Ngày 9/3 2021
+                                        </a>
+                                    </div>
+                                    <div id="note3" class="collapse show" data-parent="#noteListChild2">
+                                        <div class="card-body">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-4">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequuntur maxime officia quia. Beatae eaque et,
-            exercitationem fuga ipsum laboriosam, neque nesciunt obcaecati recusandae sunt veniam, voluptatum! Debitis, ea, quod?
+            <form action="POST" class="mt-3">
+                <h3>Sửa nội dung Note</h3>
+                <div class="form-group">
+                    <label for="noteTitle">Title Note</label>
+                    <input type="text" class="form-control" name="noteTitle" id="" aria-describedby="helpId" placeholder="">
+                    <label for="noteContent">Content Note</label>
+                    <textarea name="noteContent" id="contentNote" cols="35" rows="5"></textarea>
+                    <small id="helpId" class="form-text text-muted">điền nội dung vào đây</small>
+                    <button type="submit" class="btn btn-primary btn-block">Gửi</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

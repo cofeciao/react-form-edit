@@ -2,6 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import firebase from "firebase";
 import {firebaseConnect} from './firebaseConnect';
+import NaviBar from "./component/NaviBar";
+import ManageNote from "./component/ManageNote";
+import EditNote from "./component/EditNote";
+import React from "react";
 
 function App() {
 
@@ -20,14 +24,20 @@ function App() {
     }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-        <br/>
-      <button onClick={() => deleteNote('-MV1e-cnYhuNpQ3Jzw-Z')} className="btn btn-secondary" >Xóa</button>
-      <button onClick={() => addNote()} className="btn btn-secondary" >Thêm</button>
-    </div>
+      <div>
+          <NaviBar/>
+          <div className="container">
+              <div className="row">
+                  <div className="col">
+                      <ManageNote/>
+                  </div>
+                  <div className="col-4">
+                      <EditNote/>
+                  </div>
+              </div>
+          </div>
+      </div>
+
   );
 }
 
