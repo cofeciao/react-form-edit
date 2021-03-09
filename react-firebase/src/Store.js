@@ -1,10 +1,13 @@
+import Test from './reducer/test';
+
 var redux = require('redux');
-const allReducer = redux.combineReducers({
-    testConnet: 'connect done'
+
+const allReducers = redux.combineReducers({
+    testConnect: Test
 });
 
-const store1 = redux.createStore(allReducer);
-store1.subscribe({
-
+const store1 = redux.createStore(allReducers);
+store1.subscribe(() => {
+    store1.getState();
 });
 export default store1;

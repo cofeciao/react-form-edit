@@ -26,5 +26,4 @@ class NaviBar extends Component {
         );
     }
 }
-
 export default NaviBar;

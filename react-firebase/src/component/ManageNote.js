@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class ManageNote extends Component {
     render() {
+        console.log(this.props.testConnect);
         return (
                 <div className="col mt-3">
                     <h2>Quản Lý Note</h2>
@@ -54,4 +56,17 @@ class ManageNote extends Component {
     }
 }
 
-export default ManageNote;
+const mapStateToProps = (state,ownProps) => {
+    return {
+        testConnect: state.testConnect
+    }
+}
+
+const mapDispathToProps = (dispath,ownProps) => {
+    return {
+        useTestInStore: () => {
+            dispath({type: 'TEST_CONNECT'})
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispathToProps)(ManageNote);
