@@ -1,4 +1,4 @@
-import {firebaseConnect} from "../firebaseConnect";
+import {firebaseConnect} from "../component/firebaseConnect";
 
 const testInitialState = firebaseConnect;
 const testReducer = (state = testInitialState,action) => {

@@ -12,7 +12,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 export const firebaseConnect = firebase.initializeApp(firebaseConfig);
-// var data = firebase.database().ref('noteList/' );
-//     data.once('value').then(function (snapshot){
-//         console.log(snapshot.val());
-// });
+var data = firebase.database().ref('noteList/' );
+    data.on('value',(snapshot) => {
+         snapshot.val();
+});

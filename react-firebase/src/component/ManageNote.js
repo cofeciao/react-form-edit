@@ -1,20 +1,39 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {connectDB} from '../firebaseConnect';
+import {firebaseConnect} from './firebaseConnect';
+import firebase from "firebase";
 
 class ManageNote extends Component {
-
-    database = (connectDB) => {
-        return connectDB.database().ref('noteList/');
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: {}
+        }
     }
 
-    // componentWillMount() {
-    //     this.database.on('value', (items) => {
-    //         console.log(items);
-    //     })
-    // }
+    componentWillMount() {
+        var data = firebase.database().ref('noteList/');
+        data.on('value',(items) => {
+            // console.log(items.val());
+            this.setState({
+                data : items.val()
+            })
+        })
+    }
 
     render() {
+        // console.log(this.state.data);
+
+           var cardHeader = () => this.state.data.map((value,key) => {
+                return (
+                        <div className="card-header">
+                            <a className="card-link" data-toggle="collapse" href="#note1">
+                                {value.category}
+                            </a>
+                        </div>
+                )
+            });
+
 
         return (
                 <div className="col mt-3">
@@ -22,11 +41,7 @@ class ManageNote extends Component {
                     <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
                     <div id="noteList">
                         <div className="card">
-                            <div className="card-header">
-                                <a className="card-link" data-toggle="collapse" href="#note1">
-                                    Mục 1
-                                </a>
-                            </div>
+                            {cardHeader}
                             <div id="note1" className="collapse show" data-parent="#noteList">
                                 <div className="card-body">
                                     <div id="noteListChild">

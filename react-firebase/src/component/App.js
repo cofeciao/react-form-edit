@@ -1,9 +1,9 @@
-import './App.css';
+import '../App.css';
 // import firebase from "firebase";
 // import {firebaseConnect} from './firebaseConnect';
-import NaviBar from "./component/NaviBar";
-import ManageNote from "./component/ManageNote";
-import EditNote from "./component/EditNote";
+import NaviBar from "./NaviBar";
+import ManageNote from "./ManageNote";
+import EditNote from "./EditNote";
 import React from "react";
 
 function App() {
