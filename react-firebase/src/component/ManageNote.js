@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {connectDB} from '../firebaseConnect';
 
 class ManageNote extends Component {
+
+    database = (connectDB) => {
+        return connectDB.database().ref('noteList/');
+    }
+
+    // componentWillMount() {
+    //     this.database.on('value', (items) => {
+    //         console.log(items);
+    //     })
+    // }
+
     render() {
-        console.log(this.props.testConnect);
+
         return (
                 <div className="col mt-3">
                     <h2>Quản Lý Note</h2>
@@ -32,22 +44,6 @@ class ManageNote extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card-body">
-                                    <div id="noteListChild2">
-                                        <div className="card">
-                                            <div className="card-header">
-                                                <a className="card-link" data-toggle="collapse" href="#note3">
-                                                    Ngày 9/3 2021
-                                                </a>
-                                            </div>
-                                            <div id="note3" className="collapse show" data-parent="#noteListChild2">
-                                                <div className="card-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,14 +54,14 @@ class ManageNote extends Component {
 
 const mapStateToProps = (state,ownProps) => {
     return {
-        testConnect: state.testConnect
+        testConnect: state.getData
     }
 }
 
 const mapDispathToProps = (dispath,ownProps) => {
     return {
         useTestInStore: () => {
-            dispath({type: 'TEST_CONNECT'})
+            dispath({type: 'GET_DATA'})
         }
     }
 }

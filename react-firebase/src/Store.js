@@ -1,9 +1,8 @@
-import Test from './reducer/test';
-
+import GetDatareducer from './reducer/GetDatareducer';
 var redux = require('redux');
 
 const allReducers = redux.combineReducers({
-    testConnect: Test
+    getData: GetDatareducer
 });
 
 const store1 = redux.createStore(allReducers);

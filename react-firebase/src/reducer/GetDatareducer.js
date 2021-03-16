@@ -1,7 +1,9 @@
-const testInitialState = 'test connect done';
+import {firebaseConnect} from "../firebaseConnect";
+
+const testInitialState = firebaseConnect;
 const testReducer = (state = testInitialState,action) => {
     switch (action) {
-        case 'TEST_CONNECT':
+        case 'GET_DATA':
             return state;
         default:
             return state;

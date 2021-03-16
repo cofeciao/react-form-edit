@@ -5,13 +5,13 @@ class EditNote extends Component {
         return (
                 <form action="POST" className="mt-3">
                     <h3>Sửa nội dung Note</h3>
-                    <div className="form-group">
-                        <label htmlFor="noteTitle">Title Note</label>
-                        <input type="text" className="form-control" name="noteTitle" aria-describedby="helpId" />
-                        <label htmlFor="noteContent">Content Note</label>
-                        <textarea name="noteContent" id="contentNote" cols={35} rows={5} />
-                        <small id="helpId" className="form-text text-muted">điền nội dung vào đây</small>
-                        {/*<button type="submit" className="btn btn-primary btn-block">Gửi</button>*/}
+                    <div className="form-group mt-5">
+                        <label className="h5" htmlFor="noteTitle">Title Note</label>
+                        <input type="text" className="form-control" name="noteTitle" aria-describedby="helpId" placeholder="điền tiêu đề vào đây" />
+                        <br/>
+                        <label className="h5" htmlFor="noteContent">Content Note</label>
+                        <textarea  name="noteContent" id="contentNote" cols={29} rows={5} placeholder=" điền nội dung vào đây"/>
+                        <button type="submit" className="btn btn-primary btn-block mt-3">Gửi</button>
                     </div>
                 </form>
         );
