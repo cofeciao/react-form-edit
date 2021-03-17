@@ -1,39 +1,48 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {firebaseConnect} from './firebaseConnect';
+// import {noteData} from './firebaseConnect';
 import firebase from "firebase";
 
 class ManageNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: {}
+            data: ''
         }
     }
 
     componentWillMount() {
-        var data = firebase.database().ref('noteList/');
+        let data = firebase.database().ref('noteList/');
+        var array = [];
         data.on('value',(items) => {
-            // console.log(items.val());
-            this.setState({
-                data : items.val()
+            items.forEach(item => {
+                const title = item.val().title;
+                const category = item.val().category;
+                const content = item.val().content;
+
+                array.push({
+                    title: title,
+                    content: content,
+                    category: category
+                })
             })
+            this.setState({
+                data: array
+            });
         })
     }
 
     render() {
-        // console.log(this.state.data);
-
-           var cardHeader = () => this.state.data.map((value,key) => {
+        const cardHeader = () =>
+            this.state.data.map(item => {
                 return (
-                        <div className="card-header">
-                            <a className="card-link" data-toggle="collapse" href="#note1">
-                                {value.category}
-                            </a>
-                        </div>
+                    <div className="card-header">
+                        <a className="card-link" data-toggle="collapse" href={"note"}>
+                            {item.category}
+                        </a>
+                    </div>
                 )
-            });
-
+            })
 
         return (
                 <div className="col mt-3">
@@ -41,7 +50,7 @@ class ManageNote extends Component {
                     <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
                     <div id="noteList">
                         <div className="card">
-                            {cardHeader}
+                            {cardHeader()}
                             <div id="note1" className="collapse show" data-parent="#noteList">
                                 <div className="card-body">
                                     <div id="noteListChild">

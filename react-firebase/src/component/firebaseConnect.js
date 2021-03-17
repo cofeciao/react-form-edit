@@ -13,6 +13,6 @@ var firebaseConfig = {
 // Initialize Firebase
 export const firebaseConnect = firebase.initializeApp(firebaseConfig);
 var data = firebase.database().ref('noteList/' );
-    data.on('value',(snapshot) => {
-         snapshot.val();
-});
+//     data.once('value').then((snapshot) => {
+//          snapshot.val();
+// });
