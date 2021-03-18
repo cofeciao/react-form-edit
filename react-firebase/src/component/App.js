@@ -24,7 +24,7 @@ function App() {
 
   return (
       <div>
-          <NaviBar/>
+          {/*<NaviBar/>*/}
           <div className="container">
               <div className="row">
                   <div className="col">
