@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import firebase from "firebase";
+
 class EditNote extends Component {
     constructor(props) {
         super(props);
@@ -19,9 +21,15 @@ class EditNote extends Component {
 
     addNote = (event) => {
         event.preventDefault();
+        let data = firebase.database().ref('noteList/');
+        data.push({
+            content: this.state.noteContent,
+            title: this.state.noteTitle
+        })
     }
 
     render() {
+
         return (
                 <form action="POST" className="mt-3">
                     <h3>Sửa nội dung Note</h3>
@@ -31,7 +39,7 @@ class EditNote extends Component {
                         <br/>
                         <label className="h5" htmlFor="noteContent">Content Note</label>
                         <textarea onChange={(event) => {this.getTextForm(event)}} name="noteContent" id="contentNote" cols={29} rows={5} placeholder=" điền nội dung vào đây"/>
-                        <button onClick={(event) => {this.addNote()}} type="submit" className="btn btn-primary btn-block mt-3">Gửi</button>
+                        <button onClick={(event) => {this.addNote(event)}} type="submit" className="btn btn-primary btn-block mt-3">Gửi</button>
                     </div>
                 </form>
         );

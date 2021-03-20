@@ -12,7 +12,7 @@ class ManageNote extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let data = firebase.database().ref('noteList/');
         let array = [];
         data.on('value',(items) => {
