@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import firebase from "firebase";
 
 class ManageNote extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -44,7 +43,6 @@ class ManageNote extends Component {
                     //     </div>
                     //     <div id={"nnote"+key} className="collapse show" data-parent="#noteList">
                     //         <div className="card-body">
-                    <form>
                         <div id="noteListChild" key={key}>
                             <div className="card">
                                 <div className="card-header">
@@ -55,10 +53,12 @@ class ManageNote extends Component {
                                             </a>
                                         </div>
                                         <div className="col-3">
-                                            <div className="row ml-5">
-                                                    <div className="btn btn-warning">Sửa</div>
-                                                    <div className="btn btn-danger">Xóa</div>
-                                            </div>
+                                            <form>
+                                                <div className="row ml-5">
+                                                        <div className="btn btn-warning">Sửa</div>
+                                                        <div onClick={() => {this.removeNote(this.state.data)}} className="btn btn-danger">Xóa</div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -69,12 +69,15 @@ class ManageNote extends Component {
                                 </div>
                             </div>
                         </div>
-                    </form>
                             // </div>
                         // </div>
                     // </div>
                 )
         });
+
+    removeNote = (event) => {
+        this.state.data.filter((item) => {})
+    }
 
     render() {
 
