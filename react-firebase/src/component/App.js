@@ -7,21 +7,6 @@ import EditNote from "./EditNote";
 import React from "react";
 
 function App() {
-
-    // const deleteNote = (id) => {
-    //     const data = firebase.database().ref('noteList');
-    //     data.child(id).remove();
-    //     console.log('da xoa: ' + id);
-    // }
-    //
-    // const addNote = () => {
-    //     const data = firebase.database().ref('noteList');
-    //     data.push({
-    //         title: 'day la ham push',
-    //         content: 'su dung ham push de sinh ra id ngau nhien'
-    //     })
-    // }
-
   return (
       <div>
           {/*<NaviBar/>*/}

@@ -22,14 +22,13 @@ class EditNote extends Component {
     addNote = (event) => {
         event.preventDefault();
         let data = firebase.database().ref('noteList/');
-        data.push({
-            content: this.state.noteContent,
-            title: this.state.noteTitle
-        })
+        let note = {};
+        note.content = this.state.noteContent;
+        note.title = this.state.noteTitle;
+        this.props.addData(note);
     }
 
     render() {
-
         return (
                 <form action="POST" className="mt-3">
                     <h3>Sửa nội dung Note</h3>
@@ -54,8 +53,8 @@ const mapStatetoProps = (state,ownProps) => {
 
 const mapDispathtoProps = (dispath,ownprops) => {
     return {
-        use: () => {
-            dispath({type: 'TEST_CONNECT'});
+        addData: (getData) => {
+            dispath({type: 'ADD_DATA',getData});
         }
     }
 }

@@ -11,7 +11,7 @@ class ManageNote extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         let data = firebase.database().ref('noteList/');
         let array = [];
         data.on('value',(items) => {
@@ -80,7 +80,6 @@ class ManageNote extends Component {
     }
 
     render() {
-
         return (
             <div className="col mt-3">
                 <h2>Quản Lý Note</h2>
