@@ -11,7 +11,7 @@ class ManageNote extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let data = firebase.database().ref('noteList/');
         let array = [];
         data.on('value',(items) => {
@@ -80,6 +80,8 @@ class ManageNote extends Component {
     }
 
     render() {
+        console.log(this.props.fillData);
+        console.log(this.state.data);
         return (
             <div className="col mt-3">
                 <h2>Quản Lý Note</h2>
@@ -96,13 +98,13 @@ class ManageNote extends Component {
 
 const mapStateToProps = (state,ownProps) => {
     return {
-        testConnect: state.getData
+        fillData: state.getDataInStore
     }
 }
 
 const mapDispathToProps = (dispath,ownProps) => {
     return {
-        useTestInStore: () => {
+        getDataInStore: () => {
             dispath({type: 'GET_DATA'})
         }
     }
