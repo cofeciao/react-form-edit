@@ -8,28 +8,51 @@ class ManageNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // data: []
+            data: []
         }
     }
 
-    removeNote = (event) => {
-        this.state.data.filter((item) => {})
-    }
+    componentWillMount() {
+        let data = firebase.database().ref('noteList/');
+        let array = [];
+        data.on('value',(items) => {
+            items.forEach(item => {
+                const title = item.val().title;
+                const category = item.val().category;
+                const content = item.val().content;
 
-    getData = () => {
-        let fillData = firebase.database().ref('noteList/');
-        console.log(fillData);
-        return noteData.on('value',(snapshot) => {
-            console.log(snapshot.val());
+                array.push({
+                    title: title,
+                    content: content,
+                    category: category
+                })
+            })
+            this.setState({
+                data: array
+            });
         })
     }
 
+    removeNote = (event) => {
+        // this.state.data.filter((item) => {})
+    }
+
     render() {
-        console.log(this.getData());
+        let getData = () => {
+            return this.state.data.map((value,key) => {
+                return (
+                        <NoteItem key={key} i={key} title={value.title} content={value.content}/>
+                )
+            })
+        }
         return (
-            <div>
-                <NoteItem/>
-            </div>
+                <div className="col mt-3">
+                    <h2>Quản Lý Note</h2>
+                    <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+                    <div id="noteList">
+                            {getData()}
+                    </div>
+                </div>
         );
     }
 }

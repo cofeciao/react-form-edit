@@ -13,6 +13,6 @@ var firebaseConfig = {
 // Initialize Firebase
 export const firebaseConnect = firebase.initializeApp(firebaseConfig);
 var data = firebase.database().ref('noteList/');
-    return data.once('value').then((snapshot) => {
+    data.once('value').then((snapshot) => {
          return snapshot.val();
 });
