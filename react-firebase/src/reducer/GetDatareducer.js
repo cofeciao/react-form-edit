@@ -1,12 +1,16 @@
-import {firebaseConnect} from "../component/firebaseConnect";
+// import {firebaseConnect} from "../component/firebaseConnect";
 import firebase from "firebase";
-const testInitialState = firebaseConnect;
+var redux = require('redux');
+const testInitialState = {
+    test: []
+};
+
 const testReducer = (state = testInitialState,action) => {
     switch (action.type) {
         case 'GET_DATA':
             let fillData = firebase.database().ref('noteList/');
-            return fillData.once().then((snapshot) => {
-                return snapshot.val();
+            return fillData.on('value',(snapshot) => {
+                state.test = snapshot.val()
             })
         case 'ADD_DATA':
             let addData = firebase.database().ref('noteList/');

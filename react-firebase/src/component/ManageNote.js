@@ -1,96 +1,34 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-// import {noteData} from './firebaseConnect';
+import {noteData} from './firebaseConnect';
 import firebase from "firebase";
+import NoteItem from "./noteItem";
 
 class ManageNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            // data: []
         }
     }
-
-    componentDidMount() {
-        let data = firebase.database().ref('noteList/');
-        let array = [];
-        data.on('value',(items) => {
-            items.forEach(item => {
-                const title = item.val().title;
-                const category = item.val().category;
-                const content = item.val().content;
-
-                array.push({
-                    title: title,
-                    content: content,
-                    category: category
-                })
-            })
-            this.setState({
-                data: array
-            });
-        })
-    }
-
-    cardHeader = () =>
-        this.state.data.map((item,key) => {
-                return (
-                    // <div className="card">
-                    //     <div className="card-header">
-                    //         <a className="card-link" data-toggle="collapse" href={"#nnote"+key}>
-                    //             {item.category}
-                    //         </a>
-                    //     </div>
-                    //     <div id={"nnote"+key} className="collapse show" data-parent="#noteList">
-                    //         <div className="card-body">
-                        <div id="noteListChild" key={key}>
-                            <div className="card">
-                                <div className="card-header">
-                                    <div className="row">
-                                        <div className="col">
-                                            <a className="card-link" data-toggle="collapse" href={"#note"+key}>
-                                                {item.title}
-                                            </a>
-                                        </div>
-                                        <div className="col-3">
-                                            <form>
-                                                <div className="row ml-5">
-                                                        <div className="btn btn-warning">Sửa</div>
-                                                        <div onClick={() => {this.removeNote(this.state.data)}} className="btn btn-danger">Xóa</div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id={"note"+key} className="collapse show" data-parent="#noteListChild">
-                                    <div className="card-body">
-                                        {item.content}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            // </div>
-                        // </div>
-                    // </div>
-                )
-        });
 
     removeNote = (event) => {
         this.state.data.filter((item) => {})
     }
 
+    getData = () => {
+        let fillData = firebase.database().ref('noteList/');
+        console.log(fillData);
+        return noteData.on('value',(snapshot) => {
+            console.log(snapshot.val());
+        })
+    }
+
     render() {
-        console.log(this.props.fillData);
-        console.log(this.state.data);
+        console.log(this.getData());
         return (
-            <div className="col mt-3">
-                <h2>Quản Lý Note</h2>
-                <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
-                <div id="noteList">
-                    {
-                        this.cardHeader()
-                    }
-                </div>
+            <div>
+                <NoteItem/>
             </div>
         );
     }
@@ -98,7 +36,7 @@ class ManageNote extends Component {
 
 const mapStateToProps = (state,ownProps) => {
     return {
-        fillData: state.getDataInStore
+        fillData: state.test
     }
 }
 
