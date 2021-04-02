@@ -15,13 +15,17 @@ class ManageNote extends Component {
     componentWillMount() {
         let data = firebase.database().ref('noteList/');
         let array = [];
+
         data.on('value',(items) => {
             items.forEach(item => {
+                const id = item.key;
                 const title = item.val().title;
                 const category = item.val().category;
                 const content = item.val().content;
 
+
                 array.push({
+                    id: id,
                     title: title,
                     content: content,
                     category: category
@@ -33,15 +37,13 @@ class ManageNote extends Component {
         })
     }
 
-    removeNote = (event) => {
-        // this.state.data.filter((item) => {})
-    }
+
 
     render() {
         let getData = () => {
             return this.state.data.map((value,key) => {
                 return (
-                        <NoteItem key={key} i={key} title={value.title} content={value.content}/>
+                    <NoteItem key={key} i={key} title={value.title} content={value.content} note={value} />
                 )
             })
         }

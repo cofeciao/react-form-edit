@@ -1,5 +1,4 @@
 import firebase from "firebase";
-
 var firebaseConfig = {
     apiKey: "AIzaSyDqKz1S29kpymLbzktLlOVeoGLgYnmtm9U",
     authDomain: "noteproject-a3d55.firebaseapp.com",
@@ -11,8 +10,8 @@ var firebaseConfig = {
     measurementId: "G-5ECX6S0XSB"
 };
 // Initialize Firebase
-export const firebaseConnect = firebase.initializeApp(firebaseConfig);
-var data = firebase.database().ref('noteList/');
-    data.once('value').then((snapshot) => {
-         return snapshot.val();
-});
+export const noteData = firebase.initializeApp(firebaseConfig);
+firebase.database().ref('noteList/');
+//     data.once('value').then((snapshot) => {
+//          return snapshot.val();
+// });

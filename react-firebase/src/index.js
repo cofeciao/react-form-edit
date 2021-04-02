@@ -5,6 +5,7 @@ import App from './component/App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import store1 from "./Store";
+// import noteData from "./component/firebaseConnect"
 
 ReactDOM.render(
     <Provider store={store1}>
