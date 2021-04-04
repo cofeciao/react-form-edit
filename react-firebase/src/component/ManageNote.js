@@ -8,21 +8,20 @@ class ManageNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            fill: this.props.fillData
         }
     }
 
     componentWillMount() {
-        let data = firebase.database().ref('noteList/');
         let array = [];
 
-        data.on('value',(items) => {
+        noteData.on('value',(items) => {
             items.forEach(item => {
                 const id = item.key;
                 const title = item.val().title;
                 const category = item.val().category;
                 const content = item.val().content;
-
 
                 array.push({
                     id: id,
@@ -40,6 +39,7 @@ class ManageNote extends Component {
 
 
     render() {
+
         let getData = () => {
             return this.state.data.map((value,key) => {
                 return (
@@ -61,7 +61,7 @@ class ManageNote extends Component {
 
 const mapStateToProps = (state,ownProps) => {
     return {
-        fillData: state.test
+        fillData: state.connect
     }
 }
 

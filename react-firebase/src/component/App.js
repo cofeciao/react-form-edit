@@ -1,6 +1,6 @@
 import '../App.css';
-// import firebase from "firebase";
-// import {firebaseConnect} from './firebaseConnect';
+import firebase from "firebase";
+import {firebaseConnect} from './firebaseConnect';
 import NaviBar from "./NaviBar";
 import ManageNote from "./ManageNote";
 import EditNote from "./EditNote";

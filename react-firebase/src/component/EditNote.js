@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import firebase from "firebase";
+// import firebase from "firebase";
 
 class EditNote extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class EditNote extends Component {
 
     addNote = (event) => {
         event.preventDefault();
-        let data = firebase.database().ref('noteList/');
+        // let data = firebase.database().ref('noteList/');
         let note = {};
         note.content = this.state.noteContent;
         note.title = this.state.noteTitle;
@@ -53,8 +53,8 @@ const mapStatetoProps = (state,ownProps) => {
 
 const mapDispathtoProps = (dispath,ownprops) => {
     return {
-        addData: (getData) => {
-            dispath({type: 'ADD_DATA',getData});
+        addData: (note) => {
+            dispath({type: 'ADD_DATA',note});
         }
     }
 }

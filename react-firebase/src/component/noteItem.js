@@ -13,11 +13,9 @@ class NoteItem extends Component {
     removeNote = () => {
         // event.preventDefault();
        this.props.deleteNote(this.props.note.id);
-
     }
 
     render() {
-
         return (
             // <div className="card">
             //     <div className="card-header">
