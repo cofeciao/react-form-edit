@@ -31,6 +31,11 @@ class AddUser extends Component {
         // })
     }
 
+
+    toast = () => {
+
+    }
+
     hienthiform = () => {
         if (this.props.hienthiform === true) {
             return (
@@ -54,7 +59,7 @@ class AddUser extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <button type="reset" onClick={(event) => {this.add(event)}} className="btn btn-block btn-primary">Thêm mới</button>
+                                    <button type="reset"  onClick={(event) => {this.add(event)}} className="btn btn-block btn-primary">Thêm mới</button>
                                 </div>
                             </div>
                         </form>

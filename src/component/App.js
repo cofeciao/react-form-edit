@@ -6,6 +6,7 @@ import Search from "./Search";
 import DataTable from "./DataTable";
 import AddUser from "./AddUser";
 import DataUser from './DataUser.json';
+import ToastMessage from "./ToastMessage";
 import {connect} from 'react-redux'
 
 class App extends Component{
@@ -112,6 +113,7 @@ class App extends Component{
                             <Search getUserEdit={(user) => {this.getUserEdit(user)}} disableEditForm={this.disableEditForm} dataOneUser={this.state.userEdit} editStatus={this.state.checkedStatusEditUser} enableStatus={this.state.enableStatus} submitSearch={(dl) => {this.submitSearch(dl)}} onOff={this.state.hienthiform} hienthiform={() => {this.clickForm()}}/>
                             <DataTable deleteUser={(user) => {this.deleteUser(user)}} dataOneUser={(user) => {this.dataOneUser(user)}} editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
                             <AddUser hienthiform={this.state.hienthiform} submitAddUser={(ten,sdt,quyen) => {this.submitAddUser(ten,sdt,quyen)}}/>
+                            <ToastMessage/>
                         </div>
                     </div>
                 {/*</div>*/}

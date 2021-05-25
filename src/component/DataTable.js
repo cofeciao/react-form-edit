@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
 class DataTable extends Component {
+
+
     user = () => this.props.data.map((value,key) => {
         return (
             <tr key={key}>
@@ -19,6 +21,7 @@ class DataTable extends Component {
     })
 
     render() {
+        console.log(this.props.data);
         return (
             <div className="col">
                 <table className="table table-stripped table-hover">
