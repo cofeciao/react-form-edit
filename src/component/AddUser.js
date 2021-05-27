@@ -32,9 +32,9 @@ class AddUser extends Component {
     }
 
 
-    toast = () => {
-
-    }
+    // toast = () => {
+    //
+    // }
 
     hienthiform = () => {
         if (this.props.hienthiform === true) {

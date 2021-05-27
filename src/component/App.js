@@ -47,12 +47,14 @@ class App extends Component{
         var item = {};
         // var dataLength = this.state.data.length;
         item.id = "";
-        // console.log(item.id)
         item.ten =  ten;
         item.dienthoai = sdt;
         item.quyen = quyen;
         var items = this.state.data;
-        items.push(item);
+        if(items.push(item)){
+
+        }
+
         this.setState({
             data : items
         })

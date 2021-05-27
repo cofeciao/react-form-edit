@@ -36,8 +36,6 @@ class ManageNote extends Component {
         })
     }
 
-
-
     render() {
 
         let getData = () => {

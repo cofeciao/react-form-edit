@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
+import '../assets/toastMessage.scss';
 
 class ToastMessage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
 
+        }
+    }
     render() {
         const toast = ({
                      title = '',
@@ -36,12 +42,14 @@ class ToastMessage extends Component {
             }
         }
 
-        toast({
-            title: 'Success',
-            message: 'This is message',
-            type: 'success',
-            duration: 3000
-        });
+        const toasts = () => {
+            toast({
+                title: 'Success',
+                message: 'This is message',
+                type: 'success',
+                duration: 3000
+            });
+        }
 
         return (
             <div id="toast">

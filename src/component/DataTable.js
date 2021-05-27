@@ -3,13 +3,21 @@ import React, {Component} from 'react';
 class DataTable extends Component {
 
 
+
+
+
     user = () => this.props.data.map((value,key) => {
+        const quyen = {
+            1: 'Admin',
+            2: 'Moderator',
+            3: 'Normal'
+        };
         return (
             <tr key={key}>
                 <td>{key+1}</td>
                 <td>{value.ten}</td>
                 <td>{value.dienthoai}</td>
-                <td>{value.quyen}</td>
+                <td>{quyen[value.quyen]}</td>
                 <td>
                     <div className="btn-group">
                         <div onClick={(user) => this.props.dataOneUser(value)} className="btn btn-warning sua"><i className="fa fa-edit" /> Sửa</div>
