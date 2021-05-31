@@ -8,7 +8,6 @@ class AddUser extends Component {
         }
     }
 
-
     isChangeAddUser = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -23,6 +22,7 @@ class AddUser extends Component {
 
     add = (event) => {
         this.props.submitAddUser(this.state.ten,this.state.dienthoai,this.state.quyen);
+        this.props.showToast(event);
         // event.preventDefault();
         // console.log(this.state.ten);
         // const ten = this.state.ten;
@@ -30,11 +30,6 @@ class AddUser extends Component {
         //     ten : ''
         // })
     }
-
-
-    // toast = () => {
-    //
-    // }
 
     hienthiform = () => {
         if (this.props.hienthiform === true) {

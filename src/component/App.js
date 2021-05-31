@@ -7,7 +7,7 @@ import DataTable from "./DataTable";
 import AddUser from "./AddUser";
 import DataUser from './DataUser.json';
 import ToastMessage from "./ToastMessage";
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 
 class App extends Component{
 
@@ -18,7 +18,8 @@ class App extends Component{
             data: DataUser,
             keySearch: '',
             checkedStatusEditUser: false,
-            userEdit: {}
+            userEdit: {},
+            showToastState: <ToastMessage/>
         }
     }
 
@@ -35,7 +36,7 @@ class App extends Component{
     }
 
     editUser = (id) => {
-        console.log(id);
+        // console.log(id);
         this.state.data.forEach((item) => {
             if (item.id === id){
 
@@ -45,19 +46,27 @@ class App extends Component{
 
     submitAddUser = (ten,sdt,quyen) => {
         var item = {};
-        // var dataLength = this.state.data.length;
         item.id = "";
         item.ten =  ten;
         item.dienthoai = sdt;
         item.quyen = quyen;
         var items = this.state.data;
-        if(items.push(item)){
-
+        var beforeInsert = items.length;
+        items.unshift(item);
+        var afterInsert = items.length;
+        if (afterInsert > beforeInsert){
+            this.showToast();
         }
-
         this.setState({
             data : items
         })
+
+    }
+
+    showToast = () => {
+        return (
+            this.state.showToastState
+        )
     }
 
     enableStatus = () => {
@@ -71,7 +80,6 @@ class App extends Component{
             userEdit: user,
             checkedStatusEditUser : true
         });
-        // console.log(this.state.checkedStatusEditUser)
     }
 
     deleteUser = (user) => {
@@ -114,11 +122,12 @@ class App extends Component{
                         <div className="row">
                             <Search getUserEdit={(user) => {this.getUserEdit(user)}} disableEditForm={this.disableEditForm} dataOneUser={this.state.userEdit} editStatus={this.state.checkedStatusEditUser} enableStatus={this.state.enableStatus} submitSearch={(dl) => {this.submitSearch(dl)}} onOff={this.state.hienthiform} hienthiform={() => {this.clickForm()}}/>
                             <DataTable deleteUser={(user) => {this.deleteUser(user)}} dataOneUser={(user) => {this.dataOneUser(user)}} editUser={(id) => {this.editUser(id)}} data={arrSearch}/>
-                            <AddUser hienthiform={this.state.hienthiform} submitAddUser={(ten,sdt,quyen) => {this.submitAddUser(ten,sdt,quyen)}}/>
-                            <ToastMessage/>
+                            <AddUser showToast={() => {this.showToast()}} hienthiform={this.state.hienthiform} submitAddUser={(ten,sdt,quyen) => {this.submitAddUser(ten,sdt,quyen)}}/>
                         </div>
                     </div>
-                {/*</div>*/}
+                {
+                    // this.showToast()
+                }
             </div>
         );
     }
