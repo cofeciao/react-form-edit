@@ -36,7 +36,6 @@ class App extends Component{
     }
 
     editUser = (id) => {
-        // console.log(id);
         this.state.data.forEach((item) => {
             if (item.id === id){
 
@@ -60,13 +59,10 @@ class App extends Component{
         this.setState({
             data : items
         })
-
     }
 
     showToast = () => {
-        return (
-            this.state.showToastState
-        )
+           return (this.state.showToastState)
     }
 
     enableStatus = () => {
@@ -126,7 +122,7 @@ class App extends Component{
                         </div>
                     </div>
                 {
-                    // this.showToast()
+                    this.showToast()
                 }
             </div>
         );

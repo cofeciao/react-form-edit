@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import '../assets/toastMessage.scss';
+import '../assets/toastMessage.scss';
 
 class ToastMessage extends Component {
     constructor(props) {

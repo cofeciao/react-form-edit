@@ -15,7 +15,7 @@ class DataTable extends Component {
             3: 'Normal'
         };
 
-        console.log('in ra trong map :' + this.state.countData);
+        // console.log('in ra trong map :' + this.state.countData);
         if (this.state.countData < this.props.data.length){
             return (
                 <tr key={key}>
